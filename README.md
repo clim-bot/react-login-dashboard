@@ -1,70 +1,105 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Login Dashboard App
 
-## Available Scripts
+This project is a simple React application that demonstrates user login functionality, a dashboard page, and a 404 page for undefined routes. It also features a clean and modern UI with React Context for state management and uses a modular project structure.
 
-In the project directory, you can run:
+## Project Structure
 
-### `npm start`
+```
+react-login-dashboard
+├── public
+├── src
+│   ├── assets              # Static assets (e.g., images, fonts)
+│   ├── components          # Reusable components like Login, Dashboard, and NotFound
+│   ├── config              # Configuration files
+│   ├── context             # React Context for managing global state
+│   ├── hooks               # Custom hooks (e.g., useAuth for authentication)
+│   ├── services            # API calls and business logic
+│   ├── utils               # Utility functions and helpers
+│   ├── styles              # CSS files for each component and global styles
+│   ├── App.js              # Main application component
+│   └── index.js            # Entry point of the application
+└── README.md               # Project documentation
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Login Page**: A form with a username and password field. If the correct credentials are provided, it redirects to the dashboard.
+- **Dashboard Page**: Displays a welcome message and a logout button.
+- **404 Page**: Renders a "Page Not Found" message for undefined routes.
+- **Authentication**: Uses React Context to manage authentication status across components.
+- **Modular Structure**: Organized into folders to separate concerns and keep code maintainable.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get started with the app, follow these steps:
 
-### `npm run build`
+1. Clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```bash
+    git clone https://github.com/clim-bot/react-login-dashboard.git
+    cd react-login-dashboard
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```bash
+    npm install
+    ```
 
-### `npm run eject`
+3. Run the app:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```bash
+    npm start
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    The app should now be running at `http://localhost:3000`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Packages Installed
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **react-router-dom**: For routing between different pages (login, dashboard, and 404)
 
-## Learn More
+    ```bash
+    npm install react-router-dom
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Visit `/login` to see the login form.
+2. Use the credentials:
+    - **Username**: `user`
+    - **Password**: `password`
+3. After logging in, you'll be redirected to `/dashboard`.
+4. Access `/dashboard` directly if already authenticated.
+5. Navigate to an undefined route (e.g., `/unknown`) to see the 404 page.
 
-### Code Splitting
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **React**: JavaScript library for building user interfaces
+- **React Router**: For routing between different pages (login, dashboard, and 404)
+- **React Context**: For global state management of authentication status
+- **CSS**: For styling components with a modern and clean UI
 
-### Analyzing the Bundle Size
+## Folder Structure Details
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Components
+Holds the main UI components (e.g., Login, Dashboard, NotFound).
 
-### Making a Progressive Web App
+### Context
+Manages global state with React Context (e.g., authentication state with AuthContext).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Hooks
+Contains custom hooks for reusable logic (e.g., useAuth for authentication logic).
 
-### Advanced Configuration
+### Services
+Stores logic for interacting with APIs and handling authentication (e.g., authService).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Utils
+Holds utility functions that are used across the application.
 
-### Deployment
+### Styles
+CSS files for each component, maintaining consistent styling across the app.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. Feel free to use, modify, and distribute it as needed.
