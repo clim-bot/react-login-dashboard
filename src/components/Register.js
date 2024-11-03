@@ -1,35 +1,36 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
-import '../styles/Login.css';
-import { useAuthContext } from '../context/AuthContext';
+import '../styles/Register.css';
 
-function Login() {
+function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const navigate = useNavigate();
-  const { login } = useAuthContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setSuccess('');
 
     try {
-      const response = await api.post('/auth/login', { username, password });
-      console.log('Token:', response.data.token); // Debugging line
-      login(response.data.token); // Update auth context state
-      navigate('/dashboard', { replace: true });
+      await api.post('/auth/register', { username, password });
+      setSuccess('Registration successful! You can now log in.');
+      setTimeout(() => navigate('/login'), 2000); // Redirect to login after a delay
     } catch (err) {
-      setError('Invalid username or password');
+      console.error('Registration error:', err);
+      setError(err.response?.data?.message || 'Error registering user. Please try again.');
     }
   };
 
   return (
-    <div className="login-container">
-      <div className="login-form">
-        <h2>Login</h2>
+    <div className="register-container">
+      <div className="register-form">
+        <h2>Register</h2>
         {error && <p className="error">{error}</p>}
+        {success && <p className="success">{success}</p>}
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -43,14 +44,14 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Log In</button>
+          <button type="submit">Register</button>
         </form>
-        <p className="register-link">
-          Don’t have an account? <Link to="/register">Register here</Link>
+        <p className="login-link">
+          Already have an account? <Link to="/login">Log in here</Link>
         </p>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Register;

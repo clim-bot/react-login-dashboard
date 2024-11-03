@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './components/Login';
+import Register from './components/Register';  // Import Register component
 import Dashboard from './components/Dashboard';
 import NotFound from './components/NotFound';
 import { AuthProvider, useAuthContext } from './context/AuthContext';
@@ -14,11 +15,17 @@ function App() {
       <Routes>
         {/* Redirect root ("/") to the "/login" page */}
         <Route path="/" element={<Navigate to="/login" />} />
-        
+
         {/* Define the login route */}
         <Route
           path="/login"
           element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />}
+        />
+
+        {/* Define the register route */}
+        <Route
+          path="/register"
+          element={isAuthenticated ? <Navigate to="/dashboard" /> : <Register />}
         />
 
         {/* Define the dashboard route */}
